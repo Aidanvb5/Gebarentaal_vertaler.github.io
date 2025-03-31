@@ -1,0 +1,18 @@
+{
+  "name": "sign-language-translator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-native": "0.64.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.12.10",
+    "@babel/runtime": "7.12.5"
+  }
+}
