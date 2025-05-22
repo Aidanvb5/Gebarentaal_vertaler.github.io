@@ -2,31 +2,92 @@ import React, { useRef, useEffect } from 'react';
 
 export default function TryOut() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    async function getCamera() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      } catch (err) {
-        alert('Could not access camera.');
+    let hands: any;
+    let animationId: number;
+    let stream: MediaStream;
+    let video: HTMLVideoElement;
+    let handsScript: HTMLScriptElement | null = null;
+    let drawingScript: HTMLScriptElement | null = null;
+
+    async function setupCameraAndHands() {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        video = videoRef.current;
+        await video.play();
+        // Dynamically load MediaPipe Hands and Drawing Utils from CDN
+        handsScript = document.createElement('script');
+        handsScript.src = 'https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js';
+        handsScript.async = true;
+        drawingScript = document.createElement('script');
+        drawingScript.src = 'https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js';
+        drawingScript.async = true;
+        document.body.appendChild(handsScript);
+        document.body.appendChild(drawingScript);
+        handsScript.onload = () => {
+          drawingScript!.onload = () => {
+            // @ts-ignore
+            hands = new window.Hands({
+              locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+            });
+            hands.setOptions({
+              maxNumHands: 2,
+              modelComplexity: 1,
+              minDetectionConfidence: 0.5,
+              minTrackingConfidence: 0.5
+            });
+            hands.onResults(onResults);
+            startDetection();
+          };
+        };
       }
     }
-    getCamera();
-    return () => {
-      if (videoRef.current && videoRef.current.srcObject) {
-        const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
-        tracks.forEach(track => track.stop());
+
+    function onResults(results: any) {
+      if (!canvasRef.current || !videoRef.current) return;
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+      if (results.multiHandLandmarks) {
+        for (const landmarks of results.multiHandLandmarks) {
+          // @ts-ignore
+          window.drawConnectors(ctx, landmarks, window.HAND_CONNECTIONS, { color: '#00FF00', lineWidth: 2 });
+          // @ts-ignore
+          window.drawLandmarks(ctx, landmarks, { color: '#FF0000', lineWidth: 1 });
+        }
       }
+    }
+
+    async function startDetection() {
+      if (!video) return;
+      const detect = async () => {
+        await hands.send({ image: video });
+        animationId = requestAnimationFrame(detect);
+      };
+      detect();
+    }
+
+    setupCameraAndHands();
+    return () => {
+      if (stream) stream.getTracks().forEach(track => track.stop());
+      if (animationId) cancelAnimationFrame(animationId);
+      if (handsScript) document.body.removeChild(handsScript);
+      if (drawingScript) document.body.removeChild(drawingScript);
     };
   }, []);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f5f6fa' }}>
       <h2 style={{ color: '#222' }}>Try Out the Sign Language Translator</h2>
-      <video ref={videoRef} autoPlay playsInline style={{ width: 480, height: 360, background: '#000', borderRadius: 12, marginTop: 24 }} />
+      <div style={{ position: 'relative', width: 480, height: 360, marginTop: 24 }}>
+        <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
+        <canvas ref={canvasRef} width={480} height={360} style={{ position: 'absolute', top: 0, left: 0, borderRadius: 12, background: '#000' }} />
+      </div>
     </div>
   );
 }

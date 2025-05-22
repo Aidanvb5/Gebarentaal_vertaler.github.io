@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "@mediapipe/hands": "^0.4.1675469240",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
