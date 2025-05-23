@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 import csv
+import joblib
 
 # Load the collected data
 CSV_PATH = '../Data/POCHandSigns.csv'
@@ -36,7 +37,10 @@ CLEANED_CSV_PATH = clean_csv(CSV_PATH, EXPECTED_COLS)
 df = pd.read_csv(CLEANED_CSV_PATH)
 print(f"Loaded {len(df)} valid rows from cleaned CSV.")
 X = df.drop('label', axis=1).values
-y = LabelEncoder().fit_transform(df['label'])
+le = LabelEncoder()
+y = le.fit_transform(df['label'])
+# Save the label encoder for API use
+joblib.dump(le, "label_encoder.joblib")
 
 # Split into train/test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
