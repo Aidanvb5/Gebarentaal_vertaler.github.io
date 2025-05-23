@@ -6,3 +6,6 @@ theme: jekyll-theme-minimal
 # Prevent Jekyll from processing files in the docs folder
 exclude:
   - docs
+  - Web
+# Set the source for GitHub Pages to the Web/docs folder
+source: Web/docs

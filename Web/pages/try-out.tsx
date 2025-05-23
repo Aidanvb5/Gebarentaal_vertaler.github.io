@@ -5,6 +5,9 @@ export default function TryOut() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // Only run in the browser, not during static export or SSR
+    if (typeof window === 'undefined' || !navigator.mediaDevices) return;
+
     let hands: any;
     let animationId: number;
     let stream: MediaStream;
