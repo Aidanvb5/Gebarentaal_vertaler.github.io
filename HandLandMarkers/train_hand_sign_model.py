@@ -4,6 +4,7 @@ from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 import csv
 import joblib
+import os
 
 # Load the collected data
 CSV_PATH = '../Data/POCHandSigns.csv'
@@ -57,6 +58,8 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 # Train the model
 model.fit(X_train, y_train, epochs=20, validation_data=(X_test, y_test))
 
-# Save the model
-model.save('hand_sign_model.h5')
-print('Model trained and saved as hand_sign_model.h5')
+# Save model and label encoder to the models directory after training
+MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models')
+os.makedirs(MODEL_DIR, exist_ok=True)
+model.save(os.path.join(MODEL_DIR, 'hand_sign_model.h5'))
+joblib.dump(le, os.path.join(MODEL_DIR, 'label_encoder.joblib'))

@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import tensorflow as tf
 import joblib
+import os
 
 app = FastAPI()
 
@@ -14,9 +15,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load model and label encoder
-model = tf.keras.models.load_model("hand_sign_model.h5")
-label_encoder = joblib.load("label_encoder.joblib")
+# Load model and label encoder from a dedicated 'models' directory
+MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models')
+model = tf.keras.models.load_model(os.path.join(MODEL_DIR, "hand_sign_model.h5"))
+label_encoder = joblib.load(os.path.join(MODEL_DIR, "label_encoder.joblib"))
 
 @app.post("/predict")
 async def predict(request: Request):
