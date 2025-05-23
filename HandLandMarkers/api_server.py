@@ -15,10 +15,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Update these paths if needed
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'hand_sign_model.h5')
+ENCODER_PATH = os.path.join(os.path.dirname(__file__), 'models', 'label_encoder.joblib')
+
 # Load model and label encoder from a dedicated 'models' directory
-MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models')
-model = tf.keras.models.load_model(os.path.join(MODEL_DIR, "hand_sign_model.h5"))
-label_encoder = joblib.load(os.path.join(MODEL_DIR, "label_encoder.joblib"))
+model = tf.keras.models.load_model(MODEL_PATH)
+label_encoder = joblib.load(ENCODER_PATH)
 
 @app.post("/predict")
 async def predict(request: Request):
