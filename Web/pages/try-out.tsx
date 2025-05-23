@@ -1,6 +1,7 @@
+import dynamic from 'next/dynamic';
 import React, { useRef, useEffect } from 'react';
 
-export default function TryOut() {
+function TryOut() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -94,3 +95,5 @@ export default function TryOut() {
     </div>
   );
 }
+
+export default dynamic(() => Promise.resolve(TryOut), { ssr: false });
