@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "GITHUB_PAGES=true next export"
+    "start": "next start"
   },
   "dependencies": {
     "@mediapipe/drawing_utils": "^0.3.1675466124",
@@ -18,6 +17,7 @@
   "devDependencies": {
     "@types/node": "22.15.21",
     "@types/react": "19.1.5",
+    "cross-env": "^7.0.3",
     "typescript": "5.8.3"
   }
 }
