@@ -12,7 +12,7 @@
     },
     "distDir": ".next",
     "cleanDistDir": true,
-    "assetPrefix": "",
+    "assetPrefix": "/Gebarentaal_vertaler.github.io/",
     "cacheMaxMemorySize": 52428800,
     "configOrigin": "next.config.js",
     "useFileSystemPublicRoutes": true,
@@ -46,7 +46,7 @@
         256,
         384
       ],
-      "path": "/_next/image",
+      "path": "/Gebarentaal_vertaler.github.io/_next/image",
       "loader": "default",
       "loaderFile": "",
       "domains": [],
@@ -69,9 +69,9 @@
       "pagesBufferLength": 5
     },
     "amp": {
-      "canonicalBase": ""
+      "canonicalBase": "/Gebarentaal_vertaler.github.io"
     },
-    "basePath": "",
+    "basePath": "/Gebarentaal_vertaler.github.io",
     "sassOptions": {},
     "trailingSlash": false,
     "i18n": null,
@@ -97,7 +97,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\web",
+    "outputFileTracingRoot": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\Web",
     "experimental": {
       "nodeMiddleware": false,
       "cacheLife": {
@@ -280,10 +280,10 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "turbopack": {
-      "root": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\web"
+      "root": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\Web"
     }
   },
-  "appDir": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\web",
+  "appDir": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\Web",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",

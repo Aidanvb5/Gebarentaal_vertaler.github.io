@@ -2,8 +2,16 @@
   "version": 3,
   "pages404": true,
   "caseSensitive": false,
-  "basePath": "",
+  "basePath": "/Gebarentaal_vertaler.github.io",
   "redirects": [
+    {
+      "source": "/Gebarentaal_vertaler.github.io/",
+      "destination": "/Gebarentaal_vertaler.github.io",
+      "basePath": false,
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^/Gebarentaal_vertaler\\.github\\.io/$"
+    },
     {
       "source": "/:path+/",
       "destination": "/:path+",
@@ -45,5 +53,15 @@
     "pathHeader": "x-nextjs-rewritten-path",
     "queryHeader": "x-nextjs-rewritten-query"
   },
-  "rewrites": []
+  "rewrites": {
+    "beforeFiles": [
+      {
+        "source": "/Gebarentaal_vertaler.github.io//_next/:path+",
+        "destination": "/Gebarentaal_vertaler.github.io/_next/:path+",
+        "regex": "^/Gebarentaal_vertaler\\.github\\.io//_next(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))(?:/)?$"
+      }
+    ],
+    "afterFiles": [],
+    "fallback": []
+  }
 }
