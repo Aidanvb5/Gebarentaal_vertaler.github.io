@@ -56,6 +56,10 @@ function TryOut() {
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Mirror the canvas horizontally
+      ctx.save();
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
       ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
       if (results.multiHandLandmarks) {
         for (const landmarks of results.multiHandLandmarks) {
@@ -65,6 +69,7 @@ function TryOut() {
           window.drawLandmarks(ctx, landmarks, { color: '#FF0000', lineWidth: 1 });
         }
       }
+      ctx.restore();
     }
 
     async function startDetection() {
