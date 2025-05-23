@@ -7,5 +7,3 @@ theme: jekyll-theme-minimal
 exclude:
   - docs
   - Web
-# Set the source for GitHub Pages to the Web/docs folder
-source: Web/docs
