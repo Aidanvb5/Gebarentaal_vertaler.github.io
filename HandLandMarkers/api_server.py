@@ -28,13 +28,18 @@ async def predict(request: Request):
     data = await request.json()
     # Expecting data["landmarks"] as a list of up to 2 lists, each 63 floats
     hands = data["landmarks"]
-    # Pad with zeros if only 1 hand detected
+    # If only 1 hand, pad with zeros for the second hand
     if len(hands) == 1:
         hands.append([0.0]*63)
     elif len(hands) == 0:
         hands = [[0.0]*63, [0.0]*63]
-    # Flatten to 126 values
+    # Try both hands (126 features), fallback to 1 hand (63 features) if model expects it
     flat_landmarks = np.array(hands).flatten().reshape(1, -1)
-    pred = model.predict(flat_landmarks)
+    try:
+        pred = model.predict(flat_landmarks)
+    except Exception as e:
+        # If model expects only 1 hand (63 features), use only the first hand
+        flat_landmarks = np.array(hands[0]).reshape(1, -1)
+        pred = model.predict(flat_landmarks)
     label = label_encoder.inverse_transform([np.argmax(pred)])[0]
     return {"label": label}
