@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import Login from './Login';
-import SignUp from './SignUp';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import HandTracker from './pages/HandTracker';
 
 const App = () => {
-  const [page, setPage] = useState<'welcome' | 'login' | 'signup' | 'home'>('welcome');
+  const [page, setPage] = useState<'welcome' | 'login' | 'signup' | 'home' | 'handtracker'>('welcome');
 
   const onLoginSuccess = () => {
     setPage('home');
@@ -21,6 +22,7 @@ const App = () => {
         <View style={styles.buttonContainer}>
           <Button title="Log In" onPress={() => setPage('login')} />
           <Button title="Sign Up" onPress={() => setPage('signup')} />
+          <Button title="Hand Tracker" onPress={() => setPage('handtracker')} />
         </View>
       </View>
     );
@@ -39,9 +41,16 @@ const App = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Home Screen</Text>
         <Text>You are logged in!</Text>
-        <Button title="Log Out" onPress={() => setPage('welcome')} />
+        <View style={styles.buttonContainer}>
+          <Button title="Log Out" onPress={() => setPage('welcome')} />
+          <Button title="Hand Tracker" onPress={() => setPage('handtracker')} />
+        </View>
       </View>
     );
+  }
+
+  if (page === 'handtracker') {
+    return <HandTracker onBack={() => setPage('welcome')} />;
   }
 
   return null;
