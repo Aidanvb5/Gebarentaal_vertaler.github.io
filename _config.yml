@@ -1,0 +1,9 @@
+title: Gebarentaal_vertaler
+#logo
+description: Gebarentaal vertaler
+#show_dowloads: true
+theme: jekyll-theme-minimal
+# Prevent Jekyll from processing files in the docs folder
+exclude:
+  - docs
+  - Web
