@@ -1,21 +1,19 @@
 {
     "sqltools.connections": [
         {
-            "connectionTimeout": 15,
-            "mssqlOptions": {
-                "appName": "SQLTools",
-                "useUTC": true,
-                "encrypt": true,
-                "trustServerCertificate": false
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
             },
             "previewLimit": 50,
-            "server": "127.0.0.1\\\\SQLEXPRESS",
-            "port": 1433,
-            "driver": "MSSQL",
-            "name": "help",
-            "username": "CERBERUS\\SQLEXPRESS",
-            "database": "HandTrackerDB",
-            "password": ""
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "localtest1",
+            "database": "handtrackingdb",
+            "username": "root",
+            "password": "werqif-nErhyj-7qengu",
+            "connectionTimeout": 30
         }
     ]
 }
