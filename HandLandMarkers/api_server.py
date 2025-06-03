@@ -43,3 +43,7 @@ async def predict(request: Request):
         pred = model.predict(flat_landmarks)
     label = label_encoder.inverse_transform([np.argmax(pred)])[0]
     return {"label": label}
+
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "Sign language backend is running."}
