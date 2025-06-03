@@ -111,12 +111,6 @@ function TryOut() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f5f6fa' }}>
-      <button
-        style={{ position: 'absolute', top: 24, left: 24, padding: '8px 18px', fontSize: 16, borderRadius: 6, border: 'none', background: '#3498db', color: '#fff', cursor: 'pointer', boxShadow: '0 1px 4px #0002' }}
-        onClick={() => window.location.href = '/'}
-      >
-        ← Go Back
-      </button>
       <h2 style={{ color: '#222' }}>Try Out the Sign Language Translator</h2>
       <div style={{ position: 'relative', width: 480, height: 360, marginTop: 24 }}>
         <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
