@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import React, { useRef, useEffect, useState } from 'react';
 
 function TryOut() {
@@ -111,6 +112,11 @@ function TryOut() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f5f6fa' }}>
+      <Link href="/index">
+        <button style={{ padding: '12px 32px', fontSize: '1.1rem', background: '#0070f3', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
+          Go back
+        </button>
+      </Link>      
       <h2 style={{ color: '#222' }}>Try Out the Sign Language Translator</h2>
       <div style={{ position: 'relative', width: 480, height: 360, marginTop: 24 }}>
         <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
