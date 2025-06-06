@@ -110,21 +110,105 @@ function TryOut() {
     };
   }, []);
 
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f5f6fa' }}>
-      <h1 style={{color: 'red'}}>HELLO FROM TRYOUT PAGE</h1>
-      <Link href="/index">
-        <button style={{ padding: '12px 32px', fontSize: '1.1rem', background: '#0070f3', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
-          Go back
-        </button>
-      </Link>      
-      <div style={{ position: 'relative', width: 480, height: 360, marginTop: 24 }}>
-        <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
-        <canvas ref={canvasRef} width={480} height={360} style={{ position: 'absolute', top: 0, left: 0, borderRadius: 12, background: '#000' }} />
+
+return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        background: 'white',
+        fontFamily:
+          "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+      }}
+    >
+      <div
+        style={{
+          position: 'relative',
+          width: 480,
+          height: 360,
+          marginTop: 13,
+          border: '10px solid dodgerblue',
+          borderRadius: 12,
+          background: 'black',
+          overflow: 'hidden',
+        }}
+      >
+        <video
+          ref={videoRef}
+          style={{ display: 'none' }}
+          width={480}
+          height={360}
+          playsInline
+        />
+        <canvas
+          ref={canvasRef}
+          width={480}
+          height={360}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            borderRadius: 12,
+            background: '#000',
+          }}
+        />
       </div>
-      <div style={{ marginTop: 32, width: 480, background: '#fff', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: 24, minHeight: 60, fontSize: 22, color: '#222', textAlign: 'center' }}>
-        <strong>Vertaling:</strong>
-        <div style={{ marginTop: 8 }}>{translatedText || <span style={{ color: '#aaa' }}>(Nog geen gebaar herkend)</span>}</div>
+
+      <div
+        style={{
+          marginTop: 32,
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+          width: 500,
+        }}
+      >
+        <div
+          style={{
+            flex: 1,
+            background: 'gainsboro',
+            borderRadius: 6,
+            boxShadow: '0 2px 8px grey',
+            padding: 24,
+            minHeight: 60,
+            fontSize: 18,
+            color: 'black',
+            textAlign: 'center',
+            marginRight: 10,
+          }}
+        >
+          <strong>Vertaling:</strong>
+          <div style={{ marginTop: 8 }}>
+            <span
+              style={{ color: 'white' }}
+              id="translation-output"
+            >
+              {translatedText || '(Nog geen gebaar herkend)'}
+            </span>
+          </div>
+        </div>
+
+        <a
+          href="/Gebarentaal_vertaler.github.io/index"
+          style={{ textDecoration: 'none' }}
+        >
+          <button
+            style={{
+              padding: '8px 20px',
+              fontSize: '1rem',
+              background: 'dodgerblue',
+              color: 'white',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+            }}
+          >
+            Go back
+          </button>
+        </a>
       </div>
     </div>
   );
