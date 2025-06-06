@@ -97,7 +97,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\WebSignLang",
+    "outputFileTracingRoot": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\Gebarentaal_vertaler.github.io\\WebSignLang",
     "experimental": {
       "nodeMiddleware": false,
       "cacheLife": {
@@ -155,7 +155,7 @@
       "middlewarePrefetch": "flexible",
       "optimisticClientCache": true,
       "manualClientBasePath": false,
-      "cpus": 15,
+      "cpus": 19,
       "memoryBasedWorkersCount": false,
       "imgOptConcurrency": null,
       "imgOptTimeoutInSeconds": 7,
@@ -280,10 +280,10 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "turbopack": {
-      "root": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\WebSignLang"
+      "root": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\Gebarentaal_vertaler.github.io\\WebSignLang"
     }
   },
-  "appDir": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\New_Group_Project\\GithubGPT\\sample exam\\Gebarentaal_vertaler.github.io\\WebSignLang",
+  "appDir": "C:\\Users\\aidan\\OneDrive\\Documenten\\GitHub\\Gebarentaal_vertaler.github.io\\WebSignLang",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",
