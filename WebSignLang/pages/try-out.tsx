@@ -113,10 +113,11 @@ function TryOut() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f5f6fa' }}>
       <Link href="/index">
-        <button style={{ padding: '12px 32px', fontSize: '1.1rem', background: '#0070f3', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer' }}>
-          Go back
+        <button style={{ padding: '12px 32px', fontSize: '1.1rem', background: 'dodgerblue', color: 'white', border: 'none', borderRadius: 8, cursor: 'pointer', position: 'absolute', top: 24, left: 24 }}>
+          Terug
         </button>
-      </Link>      
+      </Link>
+      <h2 style={{ color: '#222' }}>Probeer de Gebarentaalvertaler</h2>
       <div style={{ position: 'relative', width: 480, height: 360, marginTop: 24 }}>
         <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
         <canvas ref={canvasRef} width={480} height={360} style={{ position: 'absolute', top: 0, left: 0, borderRadius: 12, background: '#000' }} />
