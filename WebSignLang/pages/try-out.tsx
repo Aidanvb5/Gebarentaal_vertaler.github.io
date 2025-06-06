@@ -117,14 +117,13 @@ function TryOut() {
           Go back
         </button>
       </Link>      
-      <h2 style={{ color: '#222' }}>Try Out the Sign Language Translator</h2>
       <div style={{ position: 'relative', width: 480, height: 360, marginTop: 24 }}>
         <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
         <canvas ref={canvasRef} width={480} height={360} style={{ position: 'absolute', top: 0, left: 0, borderRadius: 12, background: '#000' }} />
       </div>
       <div style={{ marginTop: 32, width: 480, background: '#fff', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: 24, minHeight: 60, fontSize: 22, color: '#222', textAlign: 'center' }}>
-        <strong>Translated Text:</strong>
-        <div style={{ marginTop: 8 }}>{translatedText || <span style={{ color: '#aaa' }}>(No sign detected yet)</span>}</div>
+        <strong>Vertaling:</strong>
+        <div style={{ marginTop: 8 }}>{translatedText || <span style={{ color: '#aaa' }}>(Nog geen gebaar herkend)</span>}</div>
       </div>
     </div>
   );
