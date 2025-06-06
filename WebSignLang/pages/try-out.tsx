@@ -221,9 +221,8 @@ function TryOut() {
           </div>
         </div>
       </div>
-      
-      <img 
-        src="/istockphoto-1445441554-612x612.jpg" 
+        <img 
+        src="/Gebarentaal_vertaler.github.io/istockphoto-1445441554-612x612.jpg" 
         alt="Decorative" 
         style={{ 
           position: 'fixed', 
