@@ -108,25 +108,135 @@ function TryOut() {
       if (handsScript) document.body.removeChild(handsScript);
       if (drawingScript) document.body.removeChild(drawingScript);
     };
-  }, []);
+  }, []);  return (
+    <>
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        minHeight: '100vh', 
+        position: 'relative',
+        zIndex: 2,
+        padding: '20px'
+      }}>
+        <Link href="/">
+          <button style={{ 
+            padding: '12px 32px', 
+            fontSize: '1.1rem', 
+            background: 'dodgerblue', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '8px', 
+            cursor: 'pointer', 
+            position: 'absolute', 
+            top: '24px', 
+            left: '24px',
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif',
+            transition: 'background-color 0.3s ease',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          }}>
+            Terug
+          </button>
+        </Link>
+        
+        <h1 style={{ 
+          fontSize: '2.2rem', 
+          color: 'black',
+          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif',
+          marginBottom: '16px',
+          textAlign: 'center'
+        }}>
+          Probeer de Gebarentaalvertaler
+        </h1>
+        
+        <p style={{
+          fontSize: '1.1rem',
+          color: 'darkslategrey',
+          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif',
+          marginBottom: '32px',
+          textAlign: 'center',
+          maxWidth: '600px'
+        }}>
+          Houd uw hand voor de camera en maak een gebaar. De vertaler herkent automatisch uw gebarentaal.
+        </p>
 
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#f5f6fa' }}>
-      <Link href="/index">
-        <button style={{ padding: '12px 32px', fontSize: '1.1rem', background: 'dodgerblue', color: 'white', border: 'none', borderRadius: 8, cursor: 'pointer', position: 'absolute', top: 24, left: 24 }}>
-          Terug
-        </button>
-      </Link>
-      <h2 style={{ color: '#222' }}>Probeer de Gebarentaalvertaler</h2>
-      <div style={{ position: 'relative', width: 480, height: 360, marginTop: 24 }}>
-        <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
-        <canvas ref={canvasRef} width={480} height={360} style={{ position: 'absolute', top: 0, left: 0, borderRadius: 12, background: '#000' }} />
+        <div style={{ 
+          position: 'relative', 
+          width: '480px', 
+          height: '360px', 
+          marginBottom: '24px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+          border: '2px solid #e1e5e9'
+        }}>
+          <video ref={videoRef} style={{ display: 'none' }} width={480} height={360} playsInline />
+          <canvas 
+            ref={canvasRef} 
+            width={480} 
+            height={360} 
+            style={{ 
+              position: 'absolute', 
+              top: 0, 
+              left: 0, 
+              background: '#000',
+              width: '100%',
+              height: '100%'
+            }} 
+          />
+        </div>
+        
+        <div style={{ 
+          width: '480px',
+          maxWidth: '90vw', 
+          background: '#ffffff', 
+          borderRadius: '12px', 
+          boxShadow: '0 4px 16px rgba(0,0,0,0.08)', 
+          padding: '24px', 
+          minHeight: '80px',
+          border: '1px solid #e1e5e9'
+        }}>
+          <h3 style={{
+            fontSize: '1.2rem',
+            color: 'black',
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif',
+            margin: '0 0 12px 0',
+            textAlign: 'center'
+          }}>
+            Vertaling
+          </h3>
+          <div style={{ 
+            fontSize: '1.4rem',
+            color: translatedText ? 'black' : '#999',
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif',
+            textAlign: 'center',
+            fontWeight: translatedText ? '600' : '400',
+            minHeight: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            {translatedText || "Nog geen gebaar herkend"}
+          </div>
+        </div>
       </div>
-      <div style={{ marginTop: 32, width: 480, background: '#fff', borderRadius: 8, boxShadow: '0 2px 8px #0001', padding: 24, minHeight: 60, fontSize: 22, color: '#222', textAlign: 'center' }}>
-        <strong>Vertaling:</strong>
-        <div style={{ marginTop: 8 }}>{translatedText || <span style={{ color: '#aaa' }}>(Nog geen gebaar herkend)</span>}</div>
-      </div>
-    </div>
+      
+      <img 
+        src="/istockphoto-1445441554-612x612.jpg" 
+        alt="Decorative" 
+        style={{ 
+          position: 'fixed', 
+          bottom: '-20px', 
+          left: '-15px', 
+          width: '380px', 
+          maxWidth: '60vw', 
+          zIndex: 1, 
+          opacity: 0.85, 
+          pointerEvents: 'none' 
+        }}
+      />
+    </>
   );
 }
 
