@@ -11,11 +11,8 @@ LABELS = [
 SAMPLES_PER_LABEL = 100  # Number of frames to record per sign
 header = ['label'] + [f'hand{h}_{i}_{axis}' for h in range(2) for i in range(21) for axis in ['x', 'y', 'z']]
 
-CSV_PATH = 'Data\POCHandSigns.csv'
+CSV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data', 'POCHandSigns.csv'))
 
-# Ensure the parent directory exists
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data'))
-os.makedirs(parent_dir, exist_ok=True)
 
 # If file doesn't exist, create and write header
 if not os.path.exists(CSV_PATH):
